@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cute Question</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #noBtn {
+            background-color: #f44336;
+            position: relative;
+        }
+        #noBtn:hover {
+            background-color: #f44336;
+        }
+        #goodboy {
+            display: none;
+            text-align: center;
+            font-size: 32px;
+            color: #4CAF50;
+        }
+        .reward-image {
+            width: 300px;
+            height: 300px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div id="question" class="container">
+        <p style="font-size: 24px;">You're cute! Do you agree?</p>
+        <div>
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div id="goodboy">
+        <img src="pic.jpg" alt="Reward" class="reward-image">
+        <h1>Good boy!</h1>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const questionDiv = document.getElementById('question');
+        const goodBoyDiv = document.getElementById('goodboy');
+        
+        // Handle Yes button click
+        yesBtn.addEventListener('click', function() {
+            questionDiv.style.display = 'none';
+            goodBoyDiv.style.display = 'block';
+        });
+
+        // Handle No button hover
+        noBtn.addEventListener('mouseover', function() {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        });
+    </script>
+</body>
+</html>
